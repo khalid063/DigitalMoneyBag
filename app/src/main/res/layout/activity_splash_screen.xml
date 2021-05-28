@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sp_bg"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:id="@+id/iv_splash_screen"
+        android:layout_centerInParent="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_splash_screen"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Digital Money Bag"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_below="@+id/tv_app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp">
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
