@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DigitalMoneyBag">
         <activity android:name=".CreatGroupActivity"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

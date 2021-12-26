@@ -1,10 +1,12 @@
-package com.example.digitalmoneybag;
+package com.example.digitalmoneybag.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.digitalmoneybag.R;
 
 public class SplashScreen extends AppCompatActivity {
 

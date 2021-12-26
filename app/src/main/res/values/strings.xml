@@ -12,7 +12,7 @@
 
     <string-array name="menu_item">
         <item>Home</item>
-        <item>About Me</item>
+        <item>About Us</item>
         <item>Contact</item>
         <item>Settings</item>
     </string-array>

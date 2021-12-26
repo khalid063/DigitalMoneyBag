@@ -1,6 +1,5 @@
-package com.example.digitalmoneybag;
+package com.example.digitalmoneybag.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -8,23 +7,23 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
+import com.example.digitalmoneybag.DrawerAdapter;
+import com.example.digitalmoneybag.R;
 import com.example.digitalmoneybag.databinding.ActivityMainBinding;
-import com.google.android.material.navigation.NavigationView;
+import com.example.digitalmoneybag.fragments.AboutMe;
+import com.example.digitalmoneybag.fragments.ContactFragment;
+import com.example.digitalmoneybag.fragments.HomeFragment;
+import com.example.digitalmoneybag.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView_toolbar_title.setText("Digital Money Bag");
 
         // code for showing fragment in mainActivity.xml
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment ()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
         ivMenuIco = findViewById(R.id.ivMenuIco);
         drawerLayout = findViewById (R.id.drawar_layout);
@@ -89,21 +88,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String value = countryNames[position];
                 Toast.makeText(MainActivity.this, "Clicked"+value, Toast.LENGTH_SHORT).show();
                 Log.d("position","view : "+position);
-                if (position == 0){
-                    // code for showing fragment in mainActivity.xml
-                    Toast.makeText(MainActivity.this, " Clicked", Toast.LENGTH_LONG).show();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
-                    //lvDrawer.setSelector( R.color.sp_bg);
+
+                // for color change of menu item
+                for (int i = 0; i < lvDrawer.getChildCount(); i++) {
+                    if(position == i ){
+                        lvDrawer.getChildAt(i).setBackgroundColor(Color.GREEN);
+                    }else{
+                        lvDrawer.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
                 }
-                else if (position == 1){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AboutMe()).commit();
-                    //lvDrawer.setSelector( R.color.sp_bg);
-                }
-                else if (position == 2){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
-                }
-                else if (position == 3){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SettingsFragment()).commit();
+
+                int v = position;
+                switch (v){
+                    case 0:
+                        //lvDrawer.getChildAt(v).setBackgroundColor(Color.GREEN);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+                        break;
+                    case 1:
+                        //lvDrawer.getChildAt(v).setBackgroundColor(Color.GREEN);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AboutMe()).commit();
+                        break;
+                    case 2:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ContactFragment()).commit();
+                        break;
+                    case 3:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new SettingsFragment()).commit();
+                        break;
+
+                    default:
+                        String text = "No value found";
                 }
             }
         });
